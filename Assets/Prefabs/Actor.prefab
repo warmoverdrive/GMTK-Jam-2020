@@ -48,8 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  terminalVelocity: 15
-  isGrounded: 1
+  deathParticles: {fileID: 8703880824954867854, guid: c6f3e886ce9d83a4ebb2f40a6b2e6a3c,
+    type: 3}
+  deathKickMin: 5
+  deathKickMax: 15
+  deathAngVel: 20
 --- !u!50 &4228343750942601486
 Rigidbody2D:
   serializedVersion: 4
@@ -66,7 +69,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03383f8f2ef3f914cb7c51e9500b1c0f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -80,7 +83,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 4228343750942601485}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 03383f8f2ef3f914cb7c51e9500b1c0f, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

@@ -1,29 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class ActorMovement : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 1f;
-    [SerializeField] float terminalVelocity = 2f;
+    [Header("Death Parameters")]
+    [SerializeField] ParticleSystem deathParticles;
+    [SerializeField] float deathKickMin = 1, deathKickMax = 20;
+    [SerializeField] float deathAngVel = 20;
 
+    //Cached Reference
     Rigidbody2D rigidBody;
-    bool hasFlipped = false;
-    public bool isGrounded = true; //todo make private
 
-    Vector2 currentPos;
-    
-    // Start is called before the first frame update
+    //States
+    bool hasFlipped = false;
+    bool isGrounded = true;
+    bool isDead = false;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        currentPos = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isGrounded) Move();
+        Move();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -35,16 +39,16 @@ public class ActorMovement : MonoBehaviour
         {
             FlipActor();
         }
-        else if (colliderLayer == LayerMask.NameToLayer("Hazards"))
+        else if (colliderLayer == LayerMask.NameToLayer("Hazards") && !isDead)
         {
             KillActor();
         }
         else return;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || 
             collision.gameObject.layer == LayerMask.NameToLayer("Tools")) 
         {
             isGrounded = true;
@@ -53,7 +57,8 @@ public class ActorMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Tools"))
         {
             isGrounded = false;
         }
@@ -61,6 +66,7 @@ public class ActorMovement : MonoBehaviour
 
     private void Move()
     {
+        if (isDead || !isGrounded) return;
         Vector2 force = new Vector2(movementSpeed * Time.deltaTime, rigidBody.velocity.y);
 
         rigidBody.velocity = force;
@@ -76,6 +82,22 @@ public class ActorMovement : MonoBehaviour
     private void KillActor()
     {
         FindObjectOfType<LevelController>().ActorDeath();
-        Destroy(gameObject); //TODO add animation/particles etc
+        isDead = true;
+        DeathKick();
+        var particleSystem = Instantiate(deathParticles, transform.position, transform.rotation);
+        Destroy(particleSystem, 500);
+        //Destroy(gameObject); //TODO add animation/particles etc
+    }
+
+    private void DeathKick()
+    {
+        rigidBody.freezeRotation = false;
+        rigidBody.sharedMaterial.friction = 1;
+
+        rigidBody.velocity = new Vector2(
+            Random.Range(deathKickMin,deathKickMax) / 4, 
+            Random.Range(deathKickMin, deathKickMax));
+
+        rigidBody.angularVelocity = deathAngVel;
     }
 }
