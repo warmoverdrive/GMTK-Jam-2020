@@ -20,7 +20,8 @@ public class ActorMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
+        if (isGrounded) Move();
+        else return;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

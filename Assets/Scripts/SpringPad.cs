@@ -19,7 +19,7 @@ public class SpringPad : MonoBehaviour
         var otherRigidbody = other.GetComponent<Rigidbody2D>();
         if (!otherRigidbody) return;
 
-        otherRigidbody.velocity = new Vector2(otherRigidbody.velocity.x, 0);
+        otherRigidbody.velocity = new Vector2(otherRigidbody.velocity.x, -1);
         otherRigidbody.AddForce(new Vector2(0, springForce));
         animator.SetTrigger("spring");
     }
