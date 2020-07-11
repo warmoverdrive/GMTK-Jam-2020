@@ -31,10 +31,13 @@ public class LevelController : MonoBehaviour
 
     IEnumerator SpawnActors()
     {
-        while(currentActorsSpawned < totalActorsToSpawn)
+        while(totalActorsToSpawn > 0)
         {
             entrance.SpawnActor(actor);
+
             currentActorsSpawned++;
+            totalActorsToSpawn--;
+
             activeCounter.UpdateLiveActorCounter(currentActorsSpawned);
             yield return new WaitForSeconds(timeBetweenSpawn);
         }
