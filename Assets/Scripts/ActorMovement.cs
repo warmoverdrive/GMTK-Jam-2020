@@ -9,19 +9,21 @@ public class ActorMovement : MonoBehaviour
 
     Rigidbody2D rigidBody;
     bool hasFlipped = false;
-    public bool isGrounded = true;
+    public bool isGrounded = true; //todo make private
+
+    Vector2 currentPos;
     
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        currentPos = transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if (isGrounded) Move();
-        else return;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -42,13 +44,8 @@ public class ActorMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "BouncePad") return;
-        else if (rigidBody.velocity.y >= terminalVelocity)
-        {
-            KillActor();
-        }
-
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Tools")) 
         {
             isGrounded = true;
         }

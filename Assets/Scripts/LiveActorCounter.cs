@@ -10,14 +10,13 @@ public class LiveActorCounter : MonoBehaviour
     LevelController levelController;
     TextMeshProUGUI text;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         levelController = FindObjectOfType<LevelController>();
         text = GetComponent<TextMeshProUGUI>();
         totalActors = levelController.GetTotalActorsToSpawn();
 
-        UpdateLiveActorCounter(0);
+        UpdateLiveActorCounter(0);   
     }
 
     public void UpdateLiveActorCounter(int newCount)

@@ -10,7 +10,7 @@ public class EscapedCounter : MonoBehaviour
     LevelController levelController;
     TextMeshProUGUI text;
 
-    void Start()
+    void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
         levelController = FindObjectOfType<LevelController>();

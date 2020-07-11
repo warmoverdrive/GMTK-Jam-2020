@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6135145503941648504}
-  - component: {fileID: 6135145503941648505}
+  - component: {fileID: 2900968486367700795}
   - component: {fileID: 6135145503941648510}
+  - component: {fileID: 6135145503941648505}
   - component: {fileID: 6135145503941648511}
   - component: {fileID: 5421322123031250200}
   m_Layer: 10
@@ -34,6 +35,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2900968486367700795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135145503941648508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d42dd43b7434645946cee2dad94890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolCost: 3
+--- !u!114 &6135145503941648510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135145503941648508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f109cb0047c28b442b721da4e22afe7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  springForce: 750
 --- !u!212 &6135145503941648505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,19 +112,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6135145503941648510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6135145503941648508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f109cb0047c28b442b721da4e22afe7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  springForce: 500
 --- !u!61 &6135145503941648511
 BoxCollider2D:
   m_ObjectHideFlags: 0

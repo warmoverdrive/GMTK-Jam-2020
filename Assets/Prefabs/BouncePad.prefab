@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6914048978400737900}
+  - component: {fileID: 2156987886806763668}
   - component: {fileID: 6914048978400737899}
   - component: {fileID: 6914048978400737897}
+  - component: {fileID: 5238029018094148653}
   - component: {fileID: 7271240484390548896}
   m_Layer: 10
   m_Name: BouncePad
@@ -33,6 +35,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2156987886806763668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6914048978400737896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d42dd43b7434645946cee2dad94890, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolCost: 2
 --- !u!212 &6914048978400737899
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,6 +128,18 @@ PolygonCollider2D:
       - {x: -0.29922104, y: -0.2624941}
       - {x: -0.5, y: -0.5}
       - {x: 0.5, y: -0.5}
+--- !u!114 &5238029018094148653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6914048978400737896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4360e140ff24ad548a45031e30a40830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &7271240484390548896
 Animator:
   serializedVersion: 3
