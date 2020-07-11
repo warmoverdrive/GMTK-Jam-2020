@@ -77,6 +77,7 @@ public class ActorMovement : MonoBehaviour
 
     private void KillActor()
     {
+        FindObjectOfType<LevelController>().ActorDeath();
         Destroy(gameObject); //TODO add animation/particles etc
     }
 }
