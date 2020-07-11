@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  terminalVelocity: 10
+  terminalVelocity: 8
+  isGrounded: 1
 --- !u!50 &4228343750942601486
 Rigidbody2D:
   serializedVersion: 4

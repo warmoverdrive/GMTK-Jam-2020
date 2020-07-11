@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 65977a82d2b4b37418150d3d5dbbd1e6
+guid: 83de37b4790158f419a704f495dabc4d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6723963429988506304
-    second: Spikes_0
+      213: -8094461021461583000
+    second: bouncepad_0
   - first:
-      213: -7010832575621253078
-    second: Spikes_1
+      213: -8118041969680492025
+    second: bouncepad_1
+  - first:
+      213: -8419689105177919507
+    second: bouncepad_2
+  - first:
+      213: 1959473521557353678
+    second: bouncepad_3
+  - first:
+      213: 7629101561745449922
+    second: bouncepad_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,7 +114,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spikes_0
+      name: bouncepad_0
       rect:
         serializedVersion: 2
         x: 0
@@ -113,24 +122,20 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: -8}
-        - {x: -8, y: -7}
-        - {x: 8, y: -7}
-        - {x: 8, y: -8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ca9e2f4d11505d50800000000000000
-      internalID: 6723963429988506304
+      spriteID: 86b69875692baaf80800000000000000
+      internalID: -8094461021461583000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spikes_1
+      name: bouncepad_1
       rect:
         serializedVersion: 2
         x: 16
@@ -138,18 +143,77 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -8, y: -8}
-        - {x: -8, y: -7}
-        - {x: 8, y: -7}
-        - {x: 8, y: -8}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a28bb5edae484be90800000000000000
-      internalID: -7010832575621253078
+      spriteID: 70a5b7df6dbe65f80800000000000000
+      internalID: -8118041969680492025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bouncepad_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: defb4a64e51472b80800000000000000
+      internalID: -8419689105177919507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bouncepad_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4b53f39c2713b10800000000000000
+      internalID: 1959473521557353678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bouncepad_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3273f137300e960800000000000000
+      internalID: 7629101561745449922
       vertices: []
       indices: 
       edges: []
