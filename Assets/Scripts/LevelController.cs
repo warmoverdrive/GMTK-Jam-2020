@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
 
     Entrance entrance;
 
+    public ScoreHandler scoreHandler;
     public DelayCountdownDisplay delayCountdownDisplay;
     public SpawnsRemainingDisplay spawnsRemainingDisplay;
     public BudgetDisplay budgetDisplay;
@@ -41,6 +42,7 @@ public class LevelController : MonoBehaviour
         entrance = FindObjectOfType<Entrance>();
         if (!entrance) { Debug.LogError("No Entrance Found!"); return; }
 
+        scoreHandler = FindObjectOfType<ScoreHandler>();
         sceneHandler = GetComponentInChildren<SceneHandler>();
         activeCounter = GetComponentInChildren<LiveActorCounter>();
         escapedCounter = GetComponentInChildren<EscapedCounter>();
@@ -122,6 +124,8 @@ public class LevelController : MonoBehaviour
         actorsEscaped++;
         escapedCounter.UpdateEscapedCounter(actorsEscaped);
         
+        scoreHandler.UpdateScore(1);
+        
         if(actorsEscaped == goalActorsToEscape)
         {
             WinLevel();
@@ -131,12 +135,14 @@ public class LevelController : MonoBehaviour
 
     public void ActorDeath()
     {
+        scoreHandler.UpdateScore(-1);
         RemoveActor();
     }
 
     private void WinLevel()
     {
         goalMet = true;
+        scoreHandler.UpdateScore(currentBudget*2);
         winScreen.gameObject.SetActive(true);
     }
 

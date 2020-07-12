@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 
 public class ToolSpawner : MonoBehaviour
 {
+    [Range(0, 1)] [SerializeField] float audioVolume = 0.5f;
+    [SerializeField] AudioClip selectSFX;
+    [SerializeField] AudioClip placeSFX;
     [SerializeField] LayerMask ignoreMe;
     Tool tool;
     GameObject toolParent;
@@ -27,7 +30,11 @@ public class ToolSpawner : MonoBehaviour
         if (!toolParent) toolParent = new GameObject(TOOL_PARENT_NAME);
     }
 
-    public void SetSelectedTool(Tool selectedTool) { tool = selectedTool; }
+    public void SetSelectedTool(Tool selectedTool) 
+    {
+        AudioSource.PlayClipAtPoint(selectSFX, Camera.main.transform.position, audioVolume);
+        tool = selectedTool; 
+    }
 
     private void OnMouseDown()
     {
@@ -56,6 +63,7 @@ public class ToolSpawner : MonoBehaviour
 
         if (currentBudget >= toolCost)
         {
+            AudioSource.PlayClipAtPoint(placeSFX, Camera.main.transform.position, audioVolume);
             SpawnTool(gridPos);
             levelController.SpendBudget(toolCost);
         }

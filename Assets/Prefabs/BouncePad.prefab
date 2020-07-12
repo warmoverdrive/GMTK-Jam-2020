@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4360e140ff24ad548a45031e30a40830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioVolume: 0.15
+  bounceSFX: {fileID: 8300000, guid: df22988fd4b45934c82dd10a8d542033, type: 3}
 --- !u!95 &7271240484390548896
 Animator:
   serializedVersion: 3

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DelayCountdownDisplay : MonoBehaviour
 {
+
     TextMesh text;
     MeshRenderer meshRenderer;
 

@@ -53,6 +53,13 @@ MonoBehaviour:
   deathKickMin: 5
   deathKickMax: 15
   deathAngVel: 20
+  audioVolume: 0.15
+  deathSFX:
+  - {fileID: 8300000, guid: a1538115e2a8cf743b39d8fa66758067, type: 3}
+  - {fileID: 8300000, guid: 675758a3bedc8604f985913c106082aa, type: 3}
+  - {fileID: 8300000, guid: 60bc88c96b24c99489500ff059f7b32e, type: 3}
+  spawnSFX: {fileID: 8300000, guid: bc829c58243f1aa4282a7d25ebea360b, type: 3}
+  escapeSFX: {fileID: 8300000, guid: fc91c7dd632129a46890f5330653ee62, type: 3}
 --- !u!50 &4228343750942601486
 Rigidbody2D:
   serializedVersion: 4
@@ -186,7 +193,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1161291787
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -6953996259331480573, guid: 69c78e300f4ece64bb0e07164154fb26,
     type: 3}

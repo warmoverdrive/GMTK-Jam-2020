@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/BootMenu.unity
+    guid: 065c023285ef3264986e2dbc42dd9e88
+  - enabled: 1
+    path: Assets/Scenes/Story.unity
+    guid: 306f219cb95ca9245b9813b4b4a42ea6
+  - enabled: 1
     path: Assets/Scenes/BridgeIntro.unity
     guid: e27cb7862230b7f48a6e36fc2e798a1e
   - enabled: 1
@@ -20,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProtoLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 39e5608ad4f020b438c8d2146f8b8714
   m_configObjects: {}

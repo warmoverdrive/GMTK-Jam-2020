@@ -10,6 +10,12 @@ public class ActorMovement : MonoBehaviour
     [SerializeField] ParticleSystem deathParticles;
     [SerializeField] float deathKickMin = 1, deathKickMax = 20;
     [SerializeField] float deathAngVel = 20;
+    [Header("audio")]
+    [Range(0,1)][SerializeField] float audioVolume = 0.5f;
+    [SerializeField] AudioClip[] deathSFX;
+    [SerializeField] AudioClip spawnSFX;
+    [SerializeField] AudioClip escapeSFX;
+
 
     //Cached Reference
     Rigidbody2D rigidBody;
@@ -25,6 +31,7 @@ public class ActorMovement : MonoBehaviour
 
     void Start()
     {
+        AudioSource.PlayClipAtPoint(spawnSFX, Camera.main.transform.position, audioVolume);
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
     }
@@ -123,6 +130,7 @@ public class ActorMovement : MonoBehaviour
 
     public void TriggerActorExit()
     {
+        AudioSource.PlayClipAtPoint(escapeSFX, Camera.main.transform.position, audioVolume);
         hasExited = true;
         animator.SetBool("isExit", true);
         DisablePhysics();
@@ -131,8 +139,6 @@ public class ActorMovement : MonoBehaviour
     private void DisablePhysics()
     {
         rigidBody.velocity = new Vector2(0, 0);
-/*        GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<CapsuleCollider2D>().enabled = false;*/
     }
 
     public void ExitRemoveActor()
@@ -142,6 +148,8 @@ public class ActorMovement : MonoBehaviour
 
     private void KillActor()
     {
+        AudioSource.PlayClipAtPoint(deathSFX[Random.Range(0, deathSFX.Length)], Camera.main.transform.position, audioVolume + 0.5f);
+
         FindObjectOfType<LevelController>().ActorDeath();
         isDead = true;
 

@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   springForce: 750
+  audioVolume: 0.15
+  springSFX: {fileID: 8300000, guid: 86055f6ba0865424c8703f83bb40b76b, type: 3}
 --- !u!212 &6135145503941648505
 SpriteRenderer:
   m_ObjectHideFlags: 0
