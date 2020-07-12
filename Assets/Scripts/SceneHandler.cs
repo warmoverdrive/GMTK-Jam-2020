@@ -10,10 +10,24 @@ public class SceneHandler : MonoBehaviour
     private void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        print(currentSceneIndex);
     }
 
     public void LoadCurrentScene() 
     {
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void LoadNextScene()
+    {
+        currentSceneIndex += 1;
+
+        if (SceneManager.sceneCount > currentSceneIndex) SceneManager.LoadScene(currentSceneIndex);
+        else LoadFirstScene();
+    }
+
+    private void LoadFirstScene()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ToolSpawner : MonoBehaviour
 {
+    [SerializeField] LayerMask ignoreMe;
     Tool tool;
     GameObject toolParent;
 
@@ -31,8 +33,20 @@ public class ToolSpawner : MonoBehaviour
     {
         if (!tool) return;
         if (levelController.goalImpossible || levelController.goalMet) return;
+        if (IsInputBlocked()) return;
 
-        AttemptToPlaceToolAt(GetGridClicked());
+        else AttemptToPlaceToolAt(GetGridClicked());
+    }
+
+    private bool IsInputBlocked()
+    {
+        if (EventSystem.current.IsPointerOverGameObject()) return true;
+
+        RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), 
+            Vector2.zero, 1000f, ~ignoreMe);
+
+        if (hitInfo.collider == null) return false;
+        else return true;
     }
 
     private void AttemptToPlaceToolAt(Vector2 gridPos)

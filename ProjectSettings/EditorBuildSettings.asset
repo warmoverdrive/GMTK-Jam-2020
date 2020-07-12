@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/BridgeIntro.unity
+    guid: e27cb7862230b7f48a6e36fc2e798a1e
+  - enabled: 1
+    path: Assets/Scenes/JellyIntro.unity
+    guid: b7babb7b9b9c44745b71a63e45ecdbd5
+  - enabled: 1
+    path: Assets/Scenes/SpringIntro.unity
+    guid: 0620d6d1476469a4ab88d2db75eb320f
+  - enabled: 1
+    path: Assets/Scenes/BottomofWell.unity
+    guid: 212e3dbe3f6d7c34d9ddeed2a6559408
+  - enabled: 1
+    path: Assets/Scenes/ProtoLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

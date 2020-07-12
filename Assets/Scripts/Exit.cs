@@ -13,17 +13,14 @@ public class Exit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<ActorMovement>())
+        var actor = collision.GetComponent<ActorMovement>();
+
+        if (actor)
         {
-            ExitActor(collision.gameObject);
+            actor.TriggerActorExit();
             levelController.ActorEscape();
         }
         else return;
-    }
-
-    private void ExitActor(GameObject actor) 
-    {
-        Destroy(actor); //TODO trigger exit animation
     }
     
 }

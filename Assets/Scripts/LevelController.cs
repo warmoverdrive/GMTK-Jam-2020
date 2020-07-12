@@ -81,6 +81,13 @@ public class LevelController : MonoBehaviour
             StopAllCoroutines();
             sceneHandler.LoadCurrentScene();
         }
+        else if (Input.GetKeyDown(KeyCode.Return) && goalMet)
+        {
+            print("loading next scene");
+            Time.timeScale = 1;
+            StopAllCoroutines();
+            sceneHandler.LoadNextScene();
+        }
         else if (!isSpawning)
         {
             delayTimeLeft -= Time.deltaTime;
@@ -103,8 +110,7 @@ public class LevelController : MonoBehaviour
 
         if (!goalMet)
         {
-            if(!goalImpossible && 
-                totalActorsToSpawn + currentActorsSpawned < goalActorsToEscape)
+            if(actorsEscaped + currentActorsSpawned + totalActorsToSpawn < goalActorsToEscape)
             {
                 LoseLevel();
             }
@@ -113,7 +119,6 @@ public class LevelController : MonoBehaviour
     
     public void ActorEscape()
     {
-        RemoveActor();        
         actorsEscaped++;
         escapedCounter.UpdateEscapedCounter(actorsEscaped);
         
@@ -121,6 +126,7 @@ public class LevelController : MonoBehaviour
         {
             WinLevel();
         }
+        RemoveActor();        
     }
 
     public void ActorDeath()

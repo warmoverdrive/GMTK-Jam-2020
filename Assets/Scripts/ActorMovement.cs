@@ -13,21 +13,30 @@ public class ActorMovement : MonoBehaviour
 
     //Cached Reference
     Rigidbody2D rigidBody;
+    Animator animator;
 
     //States
     bool hasFlipped = false;
     bool isGrounded = true;
     bool isDead = false;
+    bool isFlying = false;
+    bool isFalling = false;
+    bool hasExited = false;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
+        if (!hasExited)
+        {
+            Move();
+            CheckAirborneState();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -48,10 +57,11 @@ public class ActorMovement : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || 
-            collision.gameObject.layer == LayerMask.NameToLayer("Tools")) 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("Tools"))
         {
             isGrounded = true;
+            animator.SetBool("isGrounded", isGrounded);
         }
     }
 
@@ -61,6 +71,7 @@ public class ActorMovement : MonoBehaviour
             collision.gameObject.layer == LayerMask.NameToLayer("Tools"))
         {
             isGrounded = false;
+            animator.SetBool("isGrounded", isGrounded);
         }
     }
 
@@ -72,6 +83,37 @@ public class ActorMovement : MonoBehaviour
         rigidBody.velocity = force;
     }
 
+    private void CheckAirborneState()
+    {
+        if (!isGrounded)
+        {
+            switch (Mathf.Sign(rigidBody.velocity.y))
+            {
+                case 1:
+                    isFlying = true;
+                    isFalling = false;
+                    break;
+                case -1:
+                    isFlying = false;
+                    isFalling = true;
+                    break;
+            }
+        }
+        else
+        {
+            isFlying = false;
+            isFalling = false;
+        }
+
+        SetAnimatorAirborneBools();
+    }
+
+    private void SetAnimatorAirborneBools()
+    {
+        animator.SetBool("isFlying", isFlying);
+        animator.SetBool("isFalling", isFalling);
+    }
+
     private void FlipActor()
     {
         hasFlipped = !hasFlipped;
@@ -79,14 +121,35 @@ public class ActorMovement : MonoBehaviour
         transform.localScale = new Vector2(Mathf.Sign(movementSpeed), transform.localScale.y);
     }
 
+    public void TriggerActorExit()
+    {
+        hasExited = true;
+        animator.SetBool("isExit", true);
+        DisablePhysics();
+    }
+
+    private void DisablePhysics()
+    {
+        rigidBody.velocity = new Vector2(0, 0);
+/*        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<CapsuleCollider2D>().enabled = false;*/
+    }
+
+    public void ExitRemoveActor()
+    {
+        Destroy(gameObject);
+    }
+
     private void KillActor()
     {
         FindObjectOfType<LevelController>().ActorDeath();
         isDead = true;
+
+        animator.SetBool("isDead", isDead);
+
         DeathKick();
         var particleSystem = Instantiate(deathParticles, transform.position, transform.rotation);
         Destroy(particleSystem, 500);
-        //Destroy(gameObject); //TODO add animation/particles etc
     }
 
     private void DeathKick()

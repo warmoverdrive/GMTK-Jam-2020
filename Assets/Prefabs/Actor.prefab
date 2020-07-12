@@ -72,7 +72,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 03383f8f2ef3f914cb7c51e9500b1c0f, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &4228343750942601487
 CapsuleCollider2D:
@@ -106,10 +106,10 @@ BoxCollider2D:
   m_Offset: {x: 0.1299305, y: 0.0066473484}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -126,6 +126,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4228343752158610309}
   - component: {fileID: 4228343752158610310}
+  - component: {fileID: 2393197074024232986}
+  - component: {fileID: 2845815399168049202}
   m_Layer: 11
   m_Name: TileVania RobotSprite Temp_0
   m_TagString: Untagged
@@ -186,7 +188,7 @@ SpriteRenderer:
   m_SortingLayerID: -1161291787
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8572685927374565603, guid: 33b95bd0f40d83348a14a1687dbc33ae,
+  m_Sprite: {fileID: -6953996259331480573, guid: 69c78e300f4ece64bb0e07164154fb26,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -198,3 +200,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2393197074024232986
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228343752158610308}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9225c5b4fb46a42428ea45ff9d322074, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2845815399168049202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228343752158610308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc9334c1d66ee64d896d07a3fcbd098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

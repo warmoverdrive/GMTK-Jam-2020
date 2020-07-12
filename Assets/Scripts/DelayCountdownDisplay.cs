@@ -9,7 +9,7 @@ public class DelayCountdownDisplay : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         text = GetComponent<TextMesh>();
         meshRenderer = GetComponent<MeshRenderer>();

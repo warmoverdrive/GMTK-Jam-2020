@@ -8,7 +8,7 @@ public class BudgetDisplay : MonoBehaviour
     TextMeshProUGUI text;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
     }
